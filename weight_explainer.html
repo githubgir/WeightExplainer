@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Explainer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f0f0f0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .chart-container {
+            background: #e8e8e8;
+            border-radius: 4px;
+            padding: 30px 40px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .chart-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .chart-area {
+            position: relative;
+            padding-top: 35px;
+            padding-bottom: 45px;
+            margin-left: 220px;
+        }
+
+        .bars-wrapper {
+            position: relative;
+        }
+
+        .reference-line {
+            position: absolute;
+            top: 0;
+            bottom: 35px;
+            width: 1px;
+            background: #333;
+            z-index: 10;
+        }
+
+        .reference-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -3px;
+            width: 7px;
+            height: 1px;
+            background: #333;
+        }
+
+        .reference-label {
+            position: absolute;
+            top: -25px;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 400;
+            font-style: italic;
+            white-space: nowrap;
+            color: #333;
+        }
+
+        .reference-label-bottom {
+            position: absolute;
+            bottom: 0;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 400;
+            font-style: italic;
+            white-space: nowrap;
+            color: #333;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            height: 32px;
+            margin-bottom: 4px;
+            opacity: 0;
+            animation: fadeInSlide 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bar-label {
+            position: absolute;
+            left: -220px;
+            width: 210px;
+            text-align: right;
+            padding-right: 15px;
+            font-size: 13px;
+            color: #333;
+            flex-shrink: 0;
+        }
+
+        .bar-container {
+            flex: 1;
+            position: relative;
+            height: 100%;
+        }
+
+        .bar {
+            position: absolute;
+            height: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 3px;
+            min-width: 2px;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .x-axis {
+            position: relative;
+            height: 25px;
+            border-top: 1px solid #999;
+            margin-top: 5px;
+        }
+
+        .tick {
+            position: absolute;
+            top: 8px;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #555;
+        }
+
+        .idx-line {
+            left: 47.32718759768272%;
+        }
+
+        .mcap-line {
+            left: 83.00051937635014%;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <div class="chart-title">Weight Explainer</div>
+        <div class="chart-area">
+            <!-- Reference lines -->
+            <div class="reference-line idx-line">
+                <div class="reference-label">W<sub>idx</sub> = 3.446%</div>
+            </div>
+            <div class="reference-line mcap-line">
+                <div class="reference-label-bottom">W<sub>mcap</sub> = 5.029%</div>
+            </div>
+
+            <!-- Bars -->
+            <div class="bars-wrapper">
+                
+        <div class="bar-row" style="animation-delay: 2.786s;">
+            <div class="bar-label">Min Weight</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 47.32718759768272%;
+                    width: 3.882826952283267%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 52.21001454996599%; color: #2563eb;">x1.05</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 2.571s;">
+            <div class="bar-label">Turnover</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 51.21001454996599%;
+                    width: 0.3%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 52.21001454996599%; color: #2563eb;">x1</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 2.357s;">
+            <div class="bar-label">Capacity Ratio</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 51.21001454996599%;
+                    width: 18.75405417952811%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 70.9640687294941%; color: #2563eb;">x1.23</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 2.143s;">
+            <div class="bar-label">Industry / Country</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 46.896582088674506%;
+                    width: 23.067486640819595%;
+                    background-color: #6b7280;
+                "></div>
+                <div class="bar-value" style="left: 70.9640687294941%; color: #6b7280;">x0.77</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 1.929s;">
+            <div class="bar-label">Beta</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 46.896582088674506%;
+                    width: 0.3%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 47.896582088674506%; color: #2563eb;">x1</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 1.714s;">
+            <div class="bar-label">High Impact Sector (HIS)</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 46.896582088674506%;
+                    width: 0.7722593353665701%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 48.66884142404108%; color: #2563eb;">x1.01</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 1.500s;">
+            <div class="bar-label">TPI MQ Score</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 31.28922092091615%;
+                    width: 16.379620503124926%;
+                    background-color: #6b7280;
+                "></div>
+                <div class="bar-value" style="left: 48.66884142404108%; color: #6b7280;">x0.79</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 1.286s;">
+            <div class="bar-label">TPI CP 2050 Alignment</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 28.82447802616021%;
+                    width: 2.4647428947559398%;
+                    background-color: #6b7280;
+                "></div>
+                <div class="bar-value" style="left: 32.28922092091615%; color: #6b7280;">x0.96</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 1.071s;">
+            <div class="bar-label">TPI CP 2050 Not Aligned Penalty</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 28.82447802616021%;
+                    width: 2.366153178965707%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 32.19063120512592%; color: #2563eb;">x1.04</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 0.857s;">
+            <div class="bar-label">FTSE Green Revenues</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 5.352238490820422%;
+                    width: 25.838392714305495%;
+                    background-color: #6b7280;
+                "></div>
+                <div class="bar-value" style="left: 32.19063120512592%; color: #6b7280;">x0.58</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 0.643s;">
+            <div class="bar-label">Fossil Fuel Reserves Intensity</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 5.352238490820422%;
+                    width: 0.3%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 6.352238490820422%; color: #2563eb;">x1</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 0.429s;">
+            <div class="bar-label">Emissions Intensity Scope 3</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 5.352238490820422%;
+                    width: 11.418108780416905%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 17.770347271237327%; color: #2563eb;">x1.32</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 0.214s;">
+            <div class="bar-label">Emissions Intensity Scope 1&2</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 16.770347271237327%;
+                    width: 4.238972884729776%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 22.009320155967103%; color: #2563eb;">x1.09</div>
+            </div>
+        </div>
+        
+        <div class="bar-row" style="animation-delay: 0.000s;">
+            <div class="bar-label">Exclusions</div>
+            <div class="bar-container">
+                <div class="bar" style="
+                    left: 21.009320155967103%;
+                    width: 2.566933580197478%;
+                    background-color: #2563eb;
+                "></div>
+                <div class="bar-value" style="left: 24.57625373616458%; color: #2563eb;">x1.05</div>
+            </div>
+        </div>
+        
+            </div>
+
+            <!-- X-axis -->
+            <div class="x-axis">
+                <div class="tick" style="left: 3.4735529537871006%;">2%</div><div class="tick" style="left: 14.741187754376933%;">2%</div><div class="tick" style="left: 26.008822554966766%;">2%</div><div class="tick" style="left: 37.276457355556595%;">3%</div><div class="tick" style="left: 48.544092156146434%;">4%</div><div class="tick" style="left: 59.811726956736265%;">4%</div><div class="tick" style="left: 71.07936175732608%;">4%</div><div class="tick" style="left: 82.3469965579159%;">5%</div><div class="tick" style="left: 93.61463135850573%;">5%</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
