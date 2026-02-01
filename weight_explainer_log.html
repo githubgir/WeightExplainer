@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Explainer (Log Scale)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f0f0f0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .chart-container {
+            background: #e8e8e8;
+            border-radius: 4px;
+            padding: 30px 40px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .chart-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .chart-area {
+            position: relative;
+            padding-top: 35px;
+            padding-bottom: 45px;
+            margin-left: 220px;
+        }
+
+        .bars-wrapper {
+            position: relative;
+        }
+
+        .reference-line {
+            position: absolute;
+            top: 0;
+            bottom: 35px;
+            width: 1px;
+            background: #333;
+            z-index: 10;
+        }
+
+        .reference-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -3px;
+            width: 7px;
+            height: 1px;
+            background: #333;
+        }
+
+        .reference-label {
+            position: absolute;
+            top: -25px;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 400;
+            font-style: italic;
+            white-space: nowrap;
+            color: #333;
+        }
+
+        .reference-label-bottom {
+            position: absolute;
+            bottom: 0;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 400;
+            font-style: italic;
+            white-space: nowrap;
+            color: #333;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            height: 34px;
+            margin-bottom: 5px;
+            opacity: 0;
+            animation: fadeInSlide 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bar-label {
+            position: absolute;
+            left: -220px;
+            width: 210px;
+            text-align: right;
+            padding-right: 15px;
+            font-size: 13px;
+            color: #333;
+            flex-shrink: 0;
+        }
+
+        .bar-container {
+            flex: 1;
+            position: relative;
+            height: 100%;
+        }
+
+        .bar {
+            position: absolute;
+            height: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 3px;
+            min-width: 2px;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .x-axis {
+            position: relative;
+            height: 25px;
+            border-top: 1px solid #999;
+            margin-top: 5px;
+        }
+
+        .tick {
+            position: absolute;
+            top: 8px;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #555;
+        }
+
+        .idx-line {
+            left: 69.67812878582512%;
+        }
+
+        .mcap-line {
+            left: 95.47981451880642%;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <div class="chart-title">Weight Explainer (Log Scale)</div>
+        <div class="chart-area">
+            <!-- Reference lines -->
+            <div class="reference-line idx-line">
+                <div class="reference-label">W<sub>idx</sub> = 3.446%</div>
+            </div>
+            <div class="reference-line mcap-line">
+                <div class="reference-label-bottom">W<sub>mcap</sub> = 5.029%</div>
+            </div>
+
+            <!-- Bars -->
+            <div class="bars-wrapper">
+                
+        <div class="bar-row" style="animation-delay: 2.625s;">
+            <div class="bar-label">Min Weight</div>
+            <div class="bar-container">
+                <div class="bar" style="left: 69.67812878582512%; width: 3.3302780615304073%; background-color: #2563eb;"></div>
+                <div class="bar-value" style="left: 74.00840684735553%; color: #2563eb;">x1.05</div>
+            </div>
+        </div>
+        <div class="bar-row" style="animation-delay: 2.250s;">
+            <div class="bar-label">Capacity Ratio</div>
+            <div class="bar-container">
+                <div class="bar" style="left: 73.00840684735553%; width: 14.130199364208991%; background-color: #2563eb;"></div>
+                <div class="bar-value" style="left: 88.13860621156452%; color: #2563eb;">x1.23</div>
+            </div>
+        </div>
+        <div class="bar-row" style="animation-delay: 1.875s;">
+            <div class="bar-label">Industry / Country</div>
+            <div class="bar-container">
+                <div class="bar" style="left: 69.29858958380291%; width: 17.840016627761614%; background-color: #6b7280;"></div>
+                <div class="bar-value" style="left: 88.13860621156452%; color: #6b7280;">x0.77</div>
+            </div>
+        </div>
+        <div class="bar-row" style="animation-delay: 1.500s;">
+            <div class="bar-label">High Impact Sector (HIS)</div>
+            <div class="bar-container">
+                <div class="bar" style="left: 69.29858958380291%; width: 0.6791813290522839%; background-color: #2563eb;"></div>
+                <div class="bar-value" style="left: 70.97777091285519%; color: #2563eb;">x1.01</div>
+            </div>
+        </div>
+        <div class="bar-row" style="animation-delay: 1.125s;">
+            <div class="bar-label">TPI MQ Score</div>
+            <div class="bar-container">
+                <div class="bar" style="left: 53.88803378444847%; width: 16.089737128406725%; background-color: #6b7280;"></div>
+                <div class="bar-value" style="left: 70.97777091285519%; color: #6b7280;">x0.79</div>
+            </div>
+        </div>
+        <div class="bar-row" style="animation-delay: 0.750s;">
+            <div class="bar-label">FTSE Green Revenues</div>
+            <div class="bar-container">
+                <div class="bar" style="left: 16.70650359748127%; width: 37.181530186967194%; background-color: #6b7280;"></div>
+                <div class="bar-value" style="left: 54.88803378444847%; color: #6b7280;">x0.58</div>
+            </div>
+        </div>
+        <div class="bar-row" style="animation-delay: 0.375s;">
+            <div class="bar-label">Emissions Intensity Scope 3</div>
+            <div class="bar-container">
+                <div class="bar" style="left: 16.70650359748127%; width: 18.950353976408845%; background-color: #2563eb;"></div>
+                <div class="bar-value" style="left: 36.656857573890115%; color: #2563eb;">x1.32</div>
+            </div>
+        </div>
+        <div class="bar-row" style="animation-delay: 0.000s;">
+            <div class="bar-label">Exclusions</div>
+            <div class="bar-container">
+                <div class="bar" style="left: 35.656857573890115%; width: 3.3302780615304144%; background-color: #2563eb;"></div>
+                <div class="bar-value" style="left: 39.98713563542053%; color: #2563eb;">x1.05</div>
+            </div>
+        </div>
+            </div>
+
+            <!-- X-axis -->
+            <div class="x-axis">
+                <div class="tick" style="left: 32.54166319767424%;">2%</div><div class="tick" style="left: 60.217560117378966%;">3%</div><div class="tick" style="left: 79.85392148018845%;">4%</div><div class="tick" style="left: 95.08506665389707%;">5%</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
